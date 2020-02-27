@@ -1,0 +1,55 @@
+$header-color: rgb(46, 87, 4);
+$button-color: rgb(96, 197, 197);
+$buttonHover-color: rgb(11, 138, 138);
+$buttonActive-color: rgb(255, 187, 0);
+$footer-color: rgb(38, 56, 3);
+
+body {
+  background-color: azure;
+}
+
+header {
+  border: chocolate 20px solid;
+  color: $header-color;
+  text-align: center;
+}
+
+section {
+  // border: solid;
+  font-size: xx-large;
+  margin-top: 5%;
+}
+
+button {
+  background-color: $button-color;
+  border: solid;
+  font-size: xx-large;
+  margin: 1%;
+  padding: 2%;
+  transition: background-color 2s, color 2s;
+  transition: transform 2s;
+}
+
+button:hover {
+  background-color: $buttonHover-color;
+  transform: scale(1.1);
+  transition: background-color 1s, color 1s;
+  transition: transform 1s;
+}
+
+button:active {
+  color: $buttonActive-color;
+}
+
+footer {
+  // border: solid;
+  color: $footer-color;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: xx-large;
+  text-align: center;
+  margin: 5% 0 0 0;
+}
+
+input{
+  font-size: xx-large;
+}
