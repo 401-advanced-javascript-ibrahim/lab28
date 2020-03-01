@@ -9,15 +9,10 @@ body {
 }
 
 header {
-  border: chocolate 20px solid;
-  color: $header-color;
+  background-color: rgb(33, 59, 100);
+  border: rgb(30, 138, 210) 20px solid;
+  color: white;
   text-align: center;
-}
-
-section {
-  // border: solid;
-  font-size: xx-large;
-  margin-top: 5%;
 }
 
 button {
@@ -50,6 +45,19 @@ footer {
   margin: 5% 0 0 0;
 }
 
-input{
-  font-size: xx-large;
+.url {
+  font-size: x-large;
+  margin-top: 1%;
+  width: 61%;
+}
+
+.methods label {
+  padding-right: 5.5%;
+  font-size: 30px;
+}
+
+.json {
+  border: solid;
+  font-size: x-large;
+  padding-left: 3%;
 }

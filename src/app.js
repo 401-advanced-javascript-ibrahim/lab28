@@ -1,17 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import './app.scss';
 
-import './style.scss';
-
-import Message from './components/message.js';
+import Header from './components/header.js';
 import Form from './components/form.js';
+import './app.scss';
 
 class App extends React.Component {
 
   render() {
     return (
-      <Form/>
+      <>
+        <Header />
+        <Form />
+      </>
     );
   }
 }
