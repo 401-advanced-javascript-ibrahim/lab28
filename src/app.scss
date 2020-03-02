@@ -1,0 +1,63 @@
+$header-color: rgb(46, 87, 4);
+$button-color: rgb(96, 197, 197);
+$buttonHover-color: rgb(11, 138, 138);
+$buttonActive-color: rgb(255, 187, 0);
+$footer-color: rgb(38, 56, 3);
+
+body {
+  background-color: azure;
+}
+
+header {
+  background-color: rgb(33, 59, 100);
+  border: rgb(30, 138, 210) 20px solid;
+  color: white;
+  text-align: center;
+}
+
+button {
+  background-color: $button-color;
+  border: solid;
+  font-size: xx-large;
+  margin: 1%;
+  padding: 2%;
+  transition: background-color 2s, color 2s;
+  transition: transform 2s;
+}
+
+button:hover {
+  background-color: $buttonHover-color;
+  transform: scale(1.1);
+  transition: background-color 1s, color 1s;
+  transition: transform 1s;
+}
+
+button:active {
+  color: $buttonActive-color;
+}
+
+footer {
+  // border: solid;
+  color: $footer-color;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: xx-large;
+  text-align: center;
+  margin: 5% 0 0 0;
+}
+
+.url {
+  font-size: x-large;
+  margin-top: 1%;
+  width: 61%;
+}
+
+.methods label {
+  padding-right: 5.5%;
+  font-size: 30px;
+}
+
+.json {
+  // border: solid;
+  font-size: x-large;
+  padding-left: 1%;
+}
