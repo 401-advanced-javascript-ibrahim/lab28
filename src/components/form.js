@@ -19,6 +19,8 @@ class Form extends React.Component {
     let name = e.target.name;
     let value = e.target.value;
     this.setState({[name]:value});
+    this.props.saveToHistory(this.state.history);
+    console.log('__STATE__, fom.js', this.state);
   }
 
   apiCaller = e =>{
@@ -43,7 +45,11 @@ class Form extends React.Component {
             this.setState({ header, body });
           });
       });
+    let method = this.state.method;
+    let url = this.state.url;
+    this.setState({history:{method,url}});
   }
+
   render() {
     return (
       <main>
@@ -53,22 +59,22 @@ class Form extends React.Component {
               <input type="text" className="url" name="url" value={this.state.url} onChange={this.handleChange} placeholder="URL" />
               <div className="methods">
                 <label>
-                  <input type="radio" name="method" value="get" />
+                  <input type="radio" name="method" value="get" onClick={this.handleChange} />
                   <span>GET</span>
                 </label>
                 <label>
-                  <input type="radio" name="method" value="post" />
+                  <input type="radio" name="method" value="post" onClick={this.handleChange} />
                   <span>POST</span>
                 </label>
                 <label>
-                  <input type="radio" name="method" value="put" />
+                  <input type="radio" name="method" value="put" onClick={this.handleChange} />
                   <span>PUT</span>
                 </label>
                 <label>
-                  <input type="radio" name="method" value="delete" />
+                  <input type="radio" name="method" value="delete" onClick={this.handleChange} />
                   <span>DELETE</span>
                 </label>
-                <label> <button type="submit">GO!</button> </label>
+                <label> <button onClick={this.saveToHistory} type="submit">GO!</button> </label>
               </div>
             </section>
           </form>
