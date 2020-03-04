@@ -6,8 +6,8 @@ class Result extends React.Component{
   constructor(props){
     super(props);
     this.state = {};
-    console.log('sss',props.result);
-    console.log('ssssaasaaa',this.state);
+    // console.log('sss',props.result);
+    // console.log('ssssaasaaa',this.state);
 
   }
 

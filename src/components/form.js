@@ -6,7 +6,7 @@ class Form extends React.Component {
     super(props);
     this.state = {
       url: '',
-      method: 'get',
+      method: '',
       header: {},
       body: {},
       history: {},
@@ -18,19 +18,26 @@ class Form extends React.Component {
     let name = e.target.name;
     let value = e.target.value;
     this.setState({[name]:value});
-    console.log('__STATE__, fom.js', this.state);
+    // console.log('__STATE__, fom.js', this.state);
   }
 
   handleHistory = e =>{
     let method = this.state.method;
     let url = this.state.url;
-    this.setState({history:{method,url}});
+    let source = {method, url};
+    let history = this.state.history;
+    let uniq = Object.keys(this.state.history).length;
+    history[uniq] = source;
+    this.setState({history});
+    // });
+    console.log('before', this.state.history);
+    console.log('after', this.state.history);
     this.props.saveToHistory(this.state.history);
   }
 
   apiCaller = e =>{
     e.preventDefault();
-    console.log(this.state.url);
+    // console.log(this.state.url);
     fetch(this.state.url,{
       method: this.state.method,
       headers:{
@@ -89,5 +96,4 @@ class Form extends React.Component {
   }
 
 }
-
 export default Form;
