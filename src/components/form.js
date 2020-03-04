@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import ReactJson from 'react-json-view';
 
 class Form extends React.Component {
   constructor(props){
@@ -19,8 +18,14 @@ class Form extends React.Component {
     let name = e.target.name;
     let value = e.target.value;
     this.setState({[name]:value});
-    this.props.saveToHistory(this.state.history);
     console.log('__STATE__, fom.js', this.state);
+  }
+
+  handleHistory = e =>{
+    let method = this.state.method;
+    let url = this.state.url;
+    this.setState({history:{method,url}});
+    this.props.saveToHistory(this.state.history);
   }
 
   apiCaller = e =>{
@@ -38,16 +43,16 @@ class Form extends React.Component {
             let header = {'Content-Type': 'application/json'};
             let body = res;
             this.setState({ header, body });
+            this.props.sendResults({header,body});
           })
           .catch(err =>{
             let body = {error: err.message};
             let header = {};
             this.setState({ header, body });
+            this.props.sendResults({header,body});
           });
       });
-    let method = this.state.method;
-    let url = this.state.url;
-    this.setState({history:{method,url}});
+    this.props.saveToHistory(this.state.history);
   }
 
   render() {
@@ -74,22 +79,10 @@ class Form extends React.Component {
                   <input type="radio" name="method" value="delete" onClick={this.handleChange} />
                   <span>DELETE</span>
                 </label>
-                <label> <button onClick={this.saveToHistory} type="submit">GO!</button> </label>
+                <label> <button onClick={this.handleHistory} type="submit">GO!</button> </label>
               </div>
             </section>
           </form>
-          <div className="json">
-            <ReactJson name="Headers"
-              enableClipboard={false}
-              collapsed={true}
-              src={this.state.header}
-            />
-            <ReactJson name="Response"
-              enableClipboard={false}
-              collapsed={true}
-              src={this.state.body}
-            />
-          </div>
         </section>
       </main>
     );

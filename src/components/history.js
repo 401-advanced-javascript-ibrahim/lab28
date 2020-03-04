@@ -1,13 +1,19 @@
 import React from 'react';
 import Form from './form.js';
 
-function History(props) {
-  console.log('__STATE__, history.js',props);
-  return(
-    <aside>
-      <div>Hello</div>
-    </aside>
-  );
+
+class History extends React.Component {
+  render(){
+    return(
+      <aside>
+        <h3>History</h3>
+        <div>
+          <p>{this.props.info && this.props.info.method}</p>
+          <p>{this.props.info && this.props.info.url}</p>
+        </div>
+      </aside>
+    );
+  }
 }
 
 export default History;

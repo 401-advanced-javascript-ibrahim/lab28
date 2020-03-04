@@ -48,7 +48,7 @@ footer {
 .url {
   font-size: x-large;
   margin-top: 1%;
-  width: 61%;
+  width: 69%;
 }
 
 .methods label {
@@ -57,7 +57,24 @@ footer {
 }
 
 .json {
-  border: solid;
+  // border: solid;
   font-size: x-large;
-  padding-left: 3%;
+  padding-left: 1%;
+}
+.body{
+  // border: solid;
+  float: right;
+  margin-right: 4%;
+  width: 80%;
+}
+aside{
+  border: solid;
+  float: left;
+  height: 400px;
+  text-align: center;
+  width: 15%;
+}
+
+aside div{
+  border: solid;
 }
