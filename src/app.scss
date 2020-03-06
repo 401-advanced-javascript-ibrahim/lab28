@@ -15,6 +15,15 @@ header {
   text-align: center;
 }
 
+h2 {
+  display: inline;
+  margin-right: 2%;
+}
+
+a {
+  color: red;
+}
+
 button {
   background-color: $button-color;
   border: solid;
@@ -61,20 +70,24 @@ footer {
   font-size: x-large;
   padding-left: 1%;
 }
-.body{
+
+.body {
   // border: solid;
   float: right;
   margin-right: 4%;
-  width: 80%;
+  width: 75%;
 }
-aside{
+
+aside {
   border: solid;
   float: left;
   height: 400px;
+  overflow: auto;
   text-align: center;
-  width: 15%;
+  width: 18%;
 }
 
-aside div{
+aside li {
   border: solid;
+  margin-left: -40px;
 }

@@ -6,7 +6,6 @@ const render = (condition = false, children = null) => {
 
 export const If = props =>
   React.Children.map(props.children, child => {
-    console.log('cool');
     return React.cloneElement(child, { condition: props.condition });
   });
 

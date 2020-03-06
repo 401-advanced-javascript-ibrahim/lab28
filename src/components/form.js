@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import Loader from 'react-loader-spinner';
+import { If, Then, Else } from './if';
 
 class Form extends React.Component {
   constructor(props){
@@ -10,7 +12,7 @@ class Form extends React.Component {
       header: {},
       body: {},
       history: {},
-      headersVisible: false,
+      loader: false,
     };
   }
 
@@ -29,15 +31,12 @@ class Form extends React.Component {
     let uniq = Object.keys(this.state.history).length;
     history[uniq] = source;
     this.setState({history});
-    // });
-    console.log('before', this.state.history);
-    console.log('after', this.state.history);
-    this.props.saveToHistory(this.state.history);
   }
 
   apiCaller = e =>{
     e.preventDefault();
     // console.log(this.state.url);
+    this.setState({loader:true});
     fetch(this.state.url,{
       method: this.state.method,
       headers:{
@@ -50,6 +49,7 @@ class Form extends React.Component {
             let header = {'Content-Type': 'application/json'};
             let body = res;
             this.setState({ header, body });
+            this.setState({loader:false});
             this.props.sendResults({header,body});
           })
           .catch(err =>{
@@ -67,29 +67,32 @@ class Form extends React.Component {
       <main>
         <section>
           <form onSubmit={this.apiCaller}>
-            <section>
-              <input type="text" className="url" name="url" value={this.state.url} onChange={this.handleChange} placeholder="URL" />
-              <div className="methods">
-                <label>
-                  <input type="radio" name="method" value="get" onClick={this.handleChange} />
-                  <span>GET</span>
-                </label>
-                <label>
-                  <input type="radio" name="method" value="post" onClick={this.handleChange} />
-                  <span>POST</span>
-                </label>
-                <label>
-                  <input type="radio" name="method" value="put" onClick={this.handleChange} />
-                  <span>PUT</span>
-                </label>
-                <label>
-                  <input type="radio" name="method" value="delete" onClick={this.handleChange} />
-                  <span>DELETE</span>
-                </label>
-                <label> <button onClick={this.handleHistory} type="submit">GO!</button> </label>
-              </div>
-            </section>
+            <input type="text" className="url" name="url" value={this.state.url} onChange={this.handleChange} placeholder="URL" />
+            <div className="methods">
+              <label>
+                <input type="radio" name="method" value="get" onClick={this.handleChange} />
+                <span>GET</span>
+              </label>
+              <label>
+                <input type="radio" name="method" value="post" onClick={this.handleChange} />
+                <span>POST</span>
+              </label>
+              <label>
+                <input type="radio" name="method" value="put" onClick={this.handleChange} />
+                <span>PUT</span>
+              </label>
+              <label>
+                <input type="radio" name="method" value="delete" onClick={this.handleChange} />
+                <span>DELETE</span>
+              </label>
+              <label> <button onClick={this.handleHistory} type="submit">GO!</button> </label>
+            </div>
           </form>
+          <If condition={this.state.loader}>
+            <Then>
+              <Loader type='ThreeDots' color='red' height={50} width={50} />
+            </Then>
+          </If>
         </section>
       </main>
     );

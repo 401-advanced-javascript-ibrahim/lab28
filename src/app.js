@@ -20,11 +20,14 @@ class App extends React.Component {
     console.log('here',state);
     this.setState(state);
   }
+  apiCaller = state =>{
+    
+  }
   render() {
     return (
       <>
         <Header />
-        <History info={this.state.history} />
+        <History info={this.state.history} apiCaller={this.apiCaller} />
         <div className='body'>
           <Form saveToHistory={this.saveToHistory} sendResults={this.handleResults}/>
           <Results  results={this.state}/>
